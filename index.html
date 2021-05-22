@@ -4,7 +4,43 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style></style>
     <title>NASA Images</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h1>Silent NASA</h1>
+      <h2>Lorem ipsum dolor sit</h2>
+    </header>
+    <main>
+      <article>will include a form</article>
+      <article id="images">the images will go here</article>
+    </main>
+    <script>
+      var images = document.querySelector('#images');
+      var url = 'https://images-api.nasa.gov/search?q=jupiter';
+
+      function populatePage(data) {
+        var allImages = data.collection.items;
+        console.log('from populate ', allImages);
+        for (var i = 0; i < allImages.length; i++) {
+          var img = document.createElement('img');
+          img.src = allImages[i].links[0].href;
+          images.appendChild(img);
+        }
+      }
+
+      function getImages() {
+        fetch(url)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            // console.log(data.collection.items[0].links[0].href);
+            populatePage(data);
+          });
+      }
+      getImages();
+    </script>
+  </body>
 </html>
