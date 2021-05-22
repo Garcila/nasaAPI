@@ -42,7 +42,7 @@ We'll go over the process of creating an application that gets images from NASA 
   - Add a button to change color mode
   - Select the button and store in variable
 - CSS
-  - Introduce Bahunya
+  - Introduce Bahunya -classless
   - Add Bahunya
   - Work on the style tag to add
     - :root[color-mode='light']
